@@ -16,3 +16,45 @@ header {
 .nav-link:hover {
     color: #007bff;
 }
+/* ------------------------------------------------------------------------------------------ */
+
+/* Общий стиль футера */
+footer {
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+}
+
+/* Ссылки в футере (обычная колонка) */
+.footer-link-regular {
+    text-decoration: none;
+    color: #000; /* Чёрный цвет */
+}
+
+.footer-link-regular:hover {
+    text-decoration: underline;
+    color: #555; /* Тёмно-серый при наведении */
+}
+
+/* Почта */
+.footer-email {
+    text-decoration: none;
+    color: rgba(226, 18, 73, 1); /* Красный */
+    font-weight: bold;
+}
+
+.footer-email:hover {
+    text-decoration: underline;
+    color: rgba(200, 16, 65, 1); /* Немного темнее при наведении */
+}
+
+/* Иконки соцсетей */
+.footer-social {
+    color: rgba(226, 18, 73, 1); /* Красный */
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.footer-social:hover {
+    color: rgba(200, 16, 65, 1); /* Немного темнее при наведении */
+}
+

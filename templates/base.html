@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/css.css') }}" rel="stylesheet">
     <title>{% block title %}Леги.ру{% endblock %}</title>
@@ -37,6 +38,41 @@
         <!-- Контент страницы -->
         {% endblock %}
     </main>
+    <footer class="bg-light text-dark mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <!-- Левая колонка -->
+                <div class="col-md-3 mb-3">
+                    <p class="mb-2">&copy; {{ year }} Леги.ру</p>
+                </div>
+
+                <!-- Средняя колонка (ссылки, чёрный текст) -->
+                <div class="col-md-3 mb-3">
+                    <ul class="list-unstyled">
+                        <li><a href="#about" class="footer-link-regular">О компании</a></li>
+                        <li><a href="#services" class="footer-link-regular">Услуги</a></li>
+                        <li><a href="#team" class="footer-link-regular">Команда</a></li>
+                        <li><a href="#reviews" class="footer-link-regular">Отзывы</a></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка для почты -->
+                <div class="col-md-3 mb-3">
+                    <p class="mb-2"><a href="mailto:info@legi.ru" class="footer-email">info@legi.ru</a></p>
+                </div>
+
+                <!-- Колонка для соцсетей -->
+                <div class="col-md-3 mb-3">
+                    <div class="social-icons">
+                        <a href="#" class="footer-social mx-1"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="footer-social mx-1"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social mx-1"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
