@@ -142,4 +142,64 @@ footer {
 .footer-social:hover {
     color: rgba(200, 16, 65, 1); /* Немного темнее при наведении */
 }
+/* <------------------------------------------->*/
+.text-container {
+    text-align: center;
+}
 
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки одинаковой ширины */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.service-item {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.service-name {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.service-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.service-description {
+    font-size: 16px;
+    color: #777;
+}
+
+/* <--------------> */
+
+.main-content {
+    text-align: center;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+button {
+    transition: opacity 1s ease-in-out;
+}
