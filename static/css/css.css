@@ -190,7 +190,41 @@ footer {
     opacity: 1;
     transition: opacity 1s ease-in-out;
 }
+/* ------------------------------------------------------------------------------------------ снизу для заявки */
 
+/* Кнопка "Отправить запрос" */
+.btn-custom {
+    background-color: rgba(226, 18, 73, 1);
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: rgba(200, 16, 65, 1);
+}
+
+/* Поля ввода */
+.form-control {
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+/* Плейсхолдеры */
+.form-control::placeholder {
+    color: #6c757d; /* Серый текст плейсхолдера */
+    opacity: 1; /* Сделать плейсхолдер полностью видимым */
+}
+
+.form-control:focus {
+    border-color: rgba(226, 18, 73, 1);
+    box-shadow: 0 0 5px rgba(226, 18, 73, 0.5);
+}
+
+/* ------------------------------------------------------------------------------------------ */
 .hidden {
     opacity: 0;
 }
