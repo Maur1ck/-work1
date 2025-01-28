@@ -29,7 +29,7 @@ def send_email():
 
     msg = Message('Новая заявка с сайта',
                   sender='your_email@gmail.com',
-                  recipients=['recipient_email@example.com'])  # Получатель
+                  recipients=['th1sk1ks@gmail.com'])  # Получатель
     msg.body = f"""
     Имя: {name}
     Телефон: {phone}
