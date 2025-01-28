@@ -46,28 +46,24 @@
                 <p class="text-muted">Надежное правовое сопровождение вашего бизнеса</p>
             </div>
             <!-- Форма -->
-            <div class="row">
-                <div class="col-lg-9">
-                    <form id="services-form" class="row g-3">
-                        <!-- Поле имени -->
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя" required>
-                        </div>
-                        <!-- Поле телефона -->
-                        <div class="col-md-4">
-                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="+7 (495) 888-00-00" required>
-                        </div>
-                        <!-- Поле почты -->
-                        <div class="col-md-4">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
-                        </div>
-                    </form>
+            <form id="services-form" method="POST" action="/send_email" class="row g-3">
+                <!-- Поле имени -->
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя" required>
+                </div>
+                <!-- Поле телефона -->
+                <div class="col-md-4">
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="+7 (495) 888-00-00" required>
+                </div>
+                <!-- Поле почты -->
+                <div class="col-md-4">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
                 </div>
                 <!-- Кнопка -->
                 <div class="col-lg-3 d-flex align-items-end">
-                    <button class="btn btn-custom w-100" type="submit" onclick="validateForm()">Отправить запрос</button>
+                    <button class="btn btn-custom w-100" type="submit">Отправить запрос</button>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 </div>
@@ -81,18 +77,16 @@
             center: [55.751574, 37.573856], // Координаты центра карты (Москва)
             zoom: 10
         });
-
         // Добавляем метку на карту
         const myPlacemark = new ymaps.Placemark([55.751574, 37.573856], {
             hintContent: "Компания Леги.ру",
             balloonContent: "Здесь находится наш офис"
         });
-
         myMap.geoObjects.add(myPlacemark);
     });
 
     // Валидация формы на стороне клиента
-    function validateForm() {
+    document.getElementById('services-form').addEventListener('submit', function(event) {
         const name = document.getElementById("name").value;
         const phone = document.getElementById("phone").value;
         const email = document.getElementById("email").value;
@@ -102,25 +96,24 @@
         // Проверка, что все поля заполнены
         if (name === "" || phone === "" || email === "") {
             alert("Пожалуйста, заполните все поля.");
+            event.preventDefault(); // Остановить отправку формы
             return false;
         }
 
         // Проверка телефона
         if (!phone.match(phonePattern)) {
             alert("Введите телефон в формате: +7 (495) 888-00-00");
+            event.preventDefault(); // Остановить отправку формы
             return false;
         }
 
         // Проверка e-mail
         if (!email.match(emailPattern)) {
             alert("Введите корректный E-mail.");
+            event.preventDefault(); // Остановить отправку формы
             return false;
         }
-
-        // Если форма валидна, отправляем запрос
-        alert("Данные успешно отправлены!");
-        return true;
-    }
+    });
 </script>
 
 {% endblock %}

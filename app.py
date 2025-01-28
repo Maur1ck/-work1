@@ -1,21 +1,32 @@
 from flask import Flask, render_template, request, redirect, flash
-from flask_mail import Mail, Message
+import telebot
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = os.getenv('SECRET_KEY', 'default_secret_key')
 
-# Настройки Flask-Mail
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your_email@gmail.com'
-app.config['MAIL_PASSWORD'] = 'your_email_password'
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 
-mail = Mail(app)
+bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
+
 
 @app.route('/')
 def index():
     return render_template('main.html')
+
+
+def send_telegram_message(chat_id, message):
+    try:
+        bot.send_message(chat_id=chat_id, text=message)
+        return True
+    except Exception as e:
+        print(f"Error sending message to Telegram: {str(e)}")
+        return False
+
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
@@ -27,18 +38,16 @@ def send_email():
         flash('Все поля должны быть заполнены.', 'danger')
         return redirect('/')
 
-    msg = Message('Новая заявка с сайта',
-                  sender='your_email@gmail.com',
-                  recipients=['recipient_email@example.com'])  # Получатель
-    msg.body = f"""
-    Имя: {name}
-    Телефон: {phone}
-    E-mail: {email}
-    """
+    message = f"Имя: {name}\nТелефон: {phone}\nE-mail: {email}"
+    print(message)
     try:
-        mail.send(msg)
+        send_telegram_message(TELEGRAM_CHAT_ID, message)
         flash('Заявка успешно отправлена!', 'success')
     except Exception as e:
         flash(f'Ошибка при отправке: {str(e)}', 'danger')
 
     return redirect('/')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
