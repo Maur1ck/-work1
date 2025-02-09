@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Montserat, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #ffffff;
 }
 
@@ -315,4 +315,9 @@ html {
 /* -----------------------------------АНИМАЦИЯ ПРИ СКРОЛЕ---------------------------------------- */
 .map-margin {
     margin-bottom: 40px; /* Установите нужное значение отступа */
+}
+
+
+.display-4 {
+    font-weight: 500;
 }
